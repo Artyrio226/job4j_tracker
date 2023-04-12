@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 public class TriangleTest {
     @Test
     public void when00and40and04Then8() {
