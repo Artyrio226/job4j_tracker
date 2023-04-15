@@ -17,14 +17,13 @@ public class Library {
         Book ex = books[0];
         books[0] = books[3];
         books[3] = ex;
-        System.out.println("\nReplace index 0 to 3.");
+        System.out.println(System.lineSeparator() + "Replace index 0 to 3.");
         for (int index = 0; index < books.length; index++) {
             System.out.println(books[index].getName() + " - " + books[index].getPages() + " pages");
         }
-        System.out.println("\nShown only \"Clean code\"");
+        System.out.println(System.lineSeparator() + "Shown only \"Clean code\"");
         for (int index = 0; index < books.length; index++) {
-            String tmp = books[index].getName();
-            if (tmp.equals("Clean code")) {
+            if ("Clean code".equals(books[index].getName())) {
                 System.out.println(books[index].getName() + " - " + books[index].getPages() + " pages");
             }
         }
