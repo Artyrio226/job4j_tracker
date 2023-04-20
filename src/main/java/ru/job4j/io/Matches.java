@@ -10,32 +10,16 @@ public class Matches {
         int count = 11;
         while (count > 0) {
             String player = turn ? "Первый игрок" : "Второй игрок";
-            if (count > 3) {
+            int tmp = Math.min(count, 3);
                 System.out.print(player + " На столе " + count
-                        + " шт спичек, возьмите от 1 до 3 шт: ");
-            } else {
-                System.out.print(player + " На столе " + count
-                        + " шт спичек, возьмите от 1 до " + count + " шт: ");
-            }
+                        + " шт спичек, возьмите от 1 до " + tmp + " шт: ");
+
             int matches = Integer.parseInt(input.nextLine());
-            if (matches > 3 || matches > count) {
-                System.out.println("Вы взяли слишком много спичек.");
+            if (matches > 3 || matches < 1 || matches > count) {
+                System.out.println("Вы взяли неправильное количество спичек.");
             } else {
                 turn = !turn;
-                switch (matches) {
-                    case 1 -> {
-                        System.out.println("Отлично!! Вы выбрали 1 спичку!");
-                        count -= 1;
-                    }
-                    case 2 -> {
-                        System.out.println("Отлично!! Вы выбрали 2 спички!");
-                        count -= 2;
-                    }
-                    default -> {
-                        System.out.println("Отлично!! Вы выбрали 3 спички!");
-                        count -= 3;
-                    }
-                }
+                count -= matches;
             }
         }
         if (!turn) {
