@@ -15,7 +15,7 @@ public class Matches {
                         + " шт спичек, возьмите от 1 до " + tmp + " шт: ");
 
             int matches = Integer.parseInt(input.nextLine());
-            if (matches > 3 || matches < 1 || matches > count) {
+            if (matches < 1 || matches > tmp) {
                 System.out.println("Вы взяли неправильное количество спичек.");
             } else {
                 turn = !turn;
