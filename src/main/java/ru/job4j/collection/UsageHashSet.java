@@ -8,6 +8,10 @@ public class UsageHashSet {
         autos.add("Lada");
         autos.add("BMW");
         autos.add("Volvo");
+        autos.add("BMW");
+        autos.add("Toyota");
+        autos.add("BMW");
+        autos.add("Lada");
         autos.add("Toyota");
         for (String auto : autos) {
             System.out.println(auto);
