@@ -37,7 +37,9 @@ public class AnalyzeByMap {
         int count = 0;
         for (Pupil pup : pupils) {
             count++;
-            buildMap(map, pup);
+            for (Subject sub : pup.subjects()) {
+                map.put(sub.name(), sub.score() + map.getOrDefault(sub.name(), 0));
+            }
         }
         for (String key : map.keySet()) {
             Double value = Double.valueOf(map.get(key));
@@ -64,7 +66,9 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pup : pupils) {
-            buildMap(map, pup);
+            for (Subject sub : pup.subjects()) {
+                map.put(sub.name(), sub.score() + map.getOrDefault(sub.name(), 0));
+            }
         }
         for (String key : map.keySet()) {
             Double value = Double.valueOf(map.get(key));
@@ -72,16 +76,5 @@ public class AnalyzeByMap {
         }
         labels.sort(Comparator.naturalOrder());
         return labels.get(labels.size() - 1);
-    }
-
-    private static void buildMap(Map<String, Integer> map, Pupil pup) {
-        for (Subject sub : pup.subjects()) {
-            if (!(map.containsKey(sub.name()))) {
-                map.put(sub.name(), sub.score());
-            } else {
-                Integer tmp = map.get(sub.name());
-                map.put(sub.name(), sub.score() + tmp);
-            }
-        }
     }
 }
