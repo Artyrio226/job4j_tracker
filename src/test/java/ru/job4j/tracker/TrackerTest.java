@@ -118,7 +118,7 @@ public class TrackerTest {
         items.add(third);
         items.add(first);
         items.add(second);
-        items.sort(new Item.ItemAscByName());
+        items.sort(new ItemAscByName());
         List<Item> expect = Arrays.asList(first, second, third);
         assertThat(items).isEqualTo(expect);
     }
@@ -132,7 +132,7 @@ public class TrackerTest {
         items.add(third);
         items.add(first);
         items.add(second);
-        items.sort(new Item.ItemDescByName());
+        items.sort(new ItemDescByName());
         List<Item> expect = Arrays.asList(third, second, first);
         assertThat(items).isEqualTo(expect);
     }
