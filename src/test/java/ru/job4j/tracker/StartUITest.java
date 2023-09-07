@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,7 +14,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>(List.of(
                 new CreateAction(out),
                 new ExitAction(out)
@@ -27,7 +26,7 @@ public class StartUITest {
     @Test
     public void whenShowAllItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Test1"));
         Input in = new StubInput(
                 new String[] {"0", "1"}
@@ -54,7 +53,7 @@ public class StartUITest {
     @Test
     public void whenEditItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Edited item"));
         String editedName = "New item name";
         Input in = new StubInput(
@@ -71,7 +70,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -87,7 +86,7 @@ public class StartUITest {
     @Test
     public void whenFindByIdItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Test1"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -114,7 +113,7 @@ public class StartUITest {
     @Test
     public void whenFindByNameItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Test1"));
         Input in = new StubInput(
                 new String[] {"0", "Test1", "1"}
@@ -141,7 +140,7 @@ public class StartUITest {
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Input in = new StubInput(
                 new String[] {"4", "0"}
         );
