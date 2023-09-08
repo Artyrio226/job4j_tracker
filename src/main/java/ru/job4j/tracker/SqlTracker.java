@@ -32,6 +32,7 @@ public class SqlTracker implements Store {
                     config.getProperty("password")
             );
             try (Statement statement = cn.createStatement()) {
+                statement.execute("DROP TABLE IF EXISTS items;");
                 statement.execute("CREATE TABLE IF NOT EXISTS items(id serial primary key"
                         + ", name text, created timestamp);");
             }
