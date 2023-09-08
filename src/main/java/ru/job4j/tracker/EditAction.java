@@ -25,4 +25,18 @@ public class EditAction implements UserAction {
         }
         return true;
     }
+
+    @Override
+    public boolean executeMem(Input input, MemTracker tracker) {
+        out.println("=== Edit item ===");
+        int id = input.askInt("Enter id: ");
+        String name = input.askStr("Enter name: ");
+        Item item = new Item(name);
+        if (tracker.replace(id, item)) {
+            out.println("Заявка изменена успешно.");
+        } else {
+            out.println("Ошибка замены заявки.");
+        }
+        return true;
+    }
 }

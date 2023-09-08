@@ -17,4 +17,10 @@ public class ExitAction implements UserAction {
         out.println("=== Exit Program ===");
         return false;
     }
+
+    @Override
+    public boolean executeMem(Input input, MemTracker tracker) {
+        out.println("=== Exit Program ===");
+        return false;
+    }
 }

@@ -14,7 +14,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>(List.of(
                 new CreateAction(out),
                 new ExitAction(out)
@@ -26,7 +26,7 @@ public class StartUITest {
     @Test
     public void whenShowAllItem() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Test1"));
         Input in = new StubInput(
                 new String[] {"0", "1"}
@@ -53,7 +53,7 @@ public class StartUITest {
     @Test
     public void whenEditItem() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Edited item"));
         String editedName = "New item name";
         Input in = new StubInput(
@@ -70,7 +70,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -86,7 +86,7 @@ public class StartUITest {
     @Test
     public void whenFindByIdItem() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Test1"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -113,7 +113,7 @@ public class StartUITest {
     @Test
     public void whenFindByNameItem() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Test1"));
         Input in = new StubInput(
                 new String[] {"0", "Test1", "1"}
@@ -140,7 +140,7 @@ public class StartUITest {
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Input in = new StubInput(
                 new String[] {"4", "0"}
         );

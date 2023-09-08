@@ -6,4 +6,6 @@ public interface UserAction {
     String name();
 
     boolean execute(Input input, Store tracker);
+
+    boolean executeMem(Input input, MemTracker tracker);
 }

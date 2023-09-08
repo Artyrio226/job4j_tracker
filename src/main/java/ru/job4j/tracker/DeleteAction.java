@@ -26,4 +26,16 @@ public class DeleteAction implements UserAction {
         }
         return true;
     }
+
+    @Override
+    public boolean executeMem(Input input, MemTracker tracker) {
+        out.println("=== Delete item ===");
+        int id = input.askInt("Enter id: ");
+        if (tracker.delete(id)) {
+            out.println("Заявка удалена успешно.");
+        } else {
+            out.println("Ошибка удаления заявки.");
+        }
+        return true;
+    }
 }

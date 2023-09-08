@@ -21,4 +21,14 @@ public class CreateAction implements UserAction {
         out.println("Добавленная заявка: " + item);
         return true;
     }
+
+    @Override
+    public boolean executeMem(Input input, MemTracker tracker) {
+        out.println("=== Create a new Item ===");
+        String name = input.askStr("Enter name: ");
+        Item item = new Item(name);
+        tracker.add(item);
+        out.println("Добавленная заявка: " + item);
+        return true;
+    }
 }
