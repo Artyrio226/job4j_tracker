@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.io.StringWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -39,6 +40,5 @@ public final class SingleTracker {
 
     public void delete(int id) throws SQLException {
             tracker.delete(id);
-
     }
 }

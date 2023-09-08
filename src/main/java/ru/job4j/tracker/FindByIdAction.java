@@ -24,17 +24,4 @@ public class FindByIdAction implements UserAction {
         }
         return true;
     }
-
-    @Override
-    public boolean executeMem(Input input, MemTracker tracker) {
-        out.println("=== Find item by id ===");
-        int id = input.askInt("Enter id: ");
-        Item item = tracker.findById(id);
-        if (item != null) {
-            out.println(item);
-        } else {
-            out.println("Заявка с введенным id: " + id + " не найдена.");
-        }
-        return true;
-    }
 }

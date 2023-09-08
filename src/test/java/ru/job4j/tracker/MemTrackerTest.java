@@ -104,9 +104,8 @@ public class MemTrackerTest {
         MemTracker memTracker = new MemTracker();
         Item item = new Item("Bug");
         memTracker.add(item);
-        boolean result = memTracker.delete(1000);
+        memTracker.delete(1000);
         assertThat(memTracker.findById(item.getId()).getName()).isEqualTo("Bug");
-        assertThat(result).isFalse();
     }
 
     @Test
