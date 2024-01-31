@@ -22,11 +22,7 @@ public class DeleteAllItems implements UserAction {
         List<Integer> collect = allItems.stream()
                 .map(Item::getId).toList();
         for (Integer integer : collect) {
-            try {
-                tracker.delete(integer);
-            } catch (SQLException e) {
-                out.println("Ошибка удаления заявки.");
-            }
+            tracker.delete(integer);
         }
         out.println("=== Все заявки удалены ===");
         return true;
