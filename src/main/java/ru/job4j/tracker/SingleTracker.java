@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public final class SingleTracker {
-    private Store tracker = new SqlTracker();
+    private final Store tracker = new HbmTracker();
     private static SingleTracker instance = null;
 
     private SingleTracker() {
