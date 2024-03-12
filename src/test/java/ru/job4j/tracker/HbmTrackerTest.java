@@ -7,19 +7,20 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 class HbmTrackerTest {
-    private final HbmTracker tracker = new HbmTracker();
 
     @AfterEach
     public void clear() {
-        var items = tracker.findAll();
-        for (var item : items) {
-            tracker.delete(item.getId());
+        try (var tracker = new HbmTracker()) {
+            var items = tracker.findAll();
+            for (var item : items) {
+                tracker.delete(item.getId());
+            }
         }
     }
 
     @Test
     public void whenReplaceItemThenTrackerHasNewItem() throws Exception {
-        try {
+        try (var tracker = new HbmTracker()) {
             Item item1 = new Item();
             Item item2 = new Item();
             item1.setName("test1");
@@ -30,14 +31,12 @@ class HbmTrackerTest {
 
             assertThat(result).isTrue();
             assertThat(itemResult.getName()).isEqualTo(item2.getName());
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @Test
     public void whenDeleteItemThenTrackerHasNoItem() throws Exception {
-        try {
+        try (var tracker = new HbmTracker()) {
             Item item = new Item();
             item.setName("test1");
             tracker.add(item);
@@ -50,14 +49,12 @@ class HbmTrackerTest {
 
             assertThat(deleted).isTrue();
             assertThat(result).isNull();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @Test
     public void whenAddTwoItemThenFindTwoItem() throws Exception {
-        try {
+        try (var tracker = new HbmTracker()) {
             Item item1 = new Item();
             Item item2 = new Item();
             item1.setName("test1");
@@ -68,36 +65,30 @@ class HbmTrackerTest {
 
             assertThat(itemList).contains(item1, item2);
             assertThat(itemList).isEqualTo(List.of(item1, item2));
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @Test
     public void whenAddNewItemThenFindItemByName() throws Exception {
-        try {
+        try (var tracker = new HbmTracker()) {
             Item item = new Item();
             item.setName("test1");
             tracker.add(item);
             var result = tracker.findByName(item.getName());
 
             assertThat(result).isEqualTo(List.of(item));
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() throws Exception {
-        try {
+        try (var tracker = new HbmTracker()) {
             Item item = new Item();
             item.setName("test1");
             tracker.add(item);
             var result = tracker.findById(item.getId());
 
             assertThat(result.getName()).isEqualTo(item.getName());
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
